@@ -14,10 +14,12 @@ pipeline {
         }
         stage('Deploy'){
             steps{
+                script{
                  if (env.SUCCESS_BUILD != 'true') {
                         error("Failing the stage due to a condition....")
                     }
                 echo 'Deploying...'
+                }
             }
         }
         stage('Post-Build'){
