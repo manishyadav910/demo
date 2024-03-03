@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'ENVIRONMENT', choices: ['PROD', 'UAT', 'DEV'], description: 'Environment to deploy')
+        choice(name: 'ENVIRONMENT', choices: ['PROD', 'UAT', 'QA', 'DEV'], description: 'Environment to deploy')
         booleanParam(name: 'SUCCESS_BUILD', defaultValue: true, description: 'Perform a build SUCCCESSFULLY')
     }
 
@@ -35,8 +35,11 @@ pipeline {
                         case 'UAT':
                             id = 2
                             break
-                        case 'DEV':
+                        case 'QA':
                             id = 3
+                            break
+                        case 'DEV':
+                            id = 4
                             break
                     }
                     
