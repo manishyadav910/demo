@@ -33,16 +33,18 @@ pipeline {
                     // def date = env.TAG_DATE
                     // println "Tag Date Value : $date"
 
-                    curl -X POST \
-                    -H "Content-Type: application/json" \
-                    -d '{
-                        "id" : "1",
-                        "env" : "UAT",
-                        "branch" : "$branchName",
-                        "user" : "Manish",
-                        "time" : "$currentTime"
-                        }' \
-                http://localhost:8084/saveDeploy
+                    def apiUrl = '//localhost:8084/saveDeploy'
+                    def jsonBody = """
+                    {
+                    "id" : "1",
+                    "env" : "UAT",
+                    "branch" : "$branchName",
+                    "user" : "Manish",
+                    "time" : "$currentTime" 
+                    }
+                    """
+                    def curlCommand = "curl -X POST -H 'Content-Type: application/json' -d '${jsonBody}' ${apiUrl}"
+                    sh(curlCommand)
                 }
             }
         }
