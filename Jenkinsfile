@@ -26,10 +26,24 @@ pipeline {
                     def branchName = env.BRANCH_NAME
                     def userName = currentBuild.getBuildCauses()[0].userName
                     def currentTime = new Date().toString()
+                    def id
+
+                    switch (params.ENVIRONMENT) {
+                        case 'PROD':
+                            id = 1
+                            break
+                        case 'UAT':
+                            id = 2
+                            break
+                        case 'DEV':
+                            id = 3
+                            break
+                    }
+                    
                     def apiUrl = 'http://localhost:8084/saveDeploy'
                     def jsonBody = """
                     {
-                    "id" : "1",
+                    "id" : "$id",
                     "env" : "$params.ENVIRONMENT",
                     "branch" : "$branchName",
                     "user" : "$userName",
