@@ -29,6 +29,7 @@ pipeline {
                     def branchName = env.BRANCH_NAME
                     def userName = currentBuild.getBuildCauses()[0].userName
                     def currentTime = new Date().toString()
+                    def buildNo = env.BUILD_NUMBER
                     def id
 
                     switch (params.ENVIRONMENT) {
@@ -52,6 +53,7 @@ pipeline {
                     "id" : "$id",
                     "env" : "$params.ENVIRONMENT",
                     "branch" : "$branchName",
+                    "buildNo" : "$buildNo",
                     "user" : "$userName",
                     "time" : "$currentTime" 
                     }
