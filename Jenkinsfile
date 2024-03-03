@@ -33,7 +33,7 @@ pipeline {
                     // def date = env.TAG_DATE
                     // println "Tag Date Value : $date"
 
-                    def apiUrl = '//localhost:8084/saveDeploy'
+                    def apiUrl = 'http://localhost:8084/saveDeploy'
                     def jsonBody = """
                     {
                     "id" : "1",
