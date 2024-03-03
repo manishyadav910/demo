@@ -21,8 +21,8 @@ pipeline {
                     def author = env.CHANGE_AUTHOR
                     println "author : $author"
 
-                    def userName = currentBuild.getBuildCauses()[0].getUserName()
-                    println "Username : $userName"
+                    // def userName = currentBuild.getBuildCauses()[0].getUserName()
+                    // println "Username : $userName"
 
                     // def buildUser = env.BUILD_USER_ID
                     // println "Build User : $buildUser"
@@ -32,6 +32,17 @@ pipeline {
 
                     // def date = env.TAG_DATE
                     // println "Tag Date Value : $date"
+
+                    curl -X POST \
+                    -H "Content-Type: application/json" \
+                    -d '{
+                        "id" : "1",
+                        "env" : "UAT",
+                        "branch" : "$branchName",
+                        "user" : "Manish",
+                        "time" : "$currentTime"
+                        }' \
+                http://localhost:8084/saveDeploy
                 }
             }
         }
