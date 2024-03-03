@@ -14,6 +14,9 @@ pipeline {
         }
         stage('Deploy'){
             steps{
+                 if (!env.SUCCESS_BUILD) {
+                        error("Failing the stage due to a condition....")
+                    }
                 echo 'Deploying...'
             }
         }
