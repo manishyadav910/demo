@@ -21,7 +21,7 @@ pipeline {
                     def author = env.CHANGE_AUTHOR
                     println "author : $author"
 
-                    def userName = currentBuild.getBuildCauses()[0]
+                    def userName = currentBuild.getBuildCauses()[0].userName
                     println "Username : $userName"
 
                     // def buildUser = env.BUILD_USER_ID
