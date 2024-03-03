@@ -19,7 +19,7 @@ pipeline {
                     println "Branch Name : $branchName"
 
                     def author = env.CHANGE_AUTHOR
-                    println "Build User : $author"
+                    println "author : $author"
 
                     // def buildUser = env.BUILD_USER_ID
                     // println "Build User : $buildUser"
